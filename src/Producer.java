@@ -11,7 +11,7 @@ class Producer extends Worker {
         while(true){
             // Producent "produkuje" nowy przedmiot.
             item = Worker.itemID++;
-            System.out.println("Producent <" + name + ">   produkuje: " + item);
+            ProducerConsumerApp.textArea.append("Producent <" + name + ">   produkuje: " + item + "\n");
             sleep(MIN_PRODUCER_TIME, MAX_PRODUCER_TIME);
 
             // Producent umieszcza przedmiot w buforze.

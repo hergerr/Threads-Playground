@@ -14,7 +14,7 @@ class Consumer extends Worker {
 
             // Konsument zużywa popraany przedmiot.
             sleep(MIN_CONSUMER_TIME, MAX_CONSUMER_TIME);
-            System.out.println("Konsument <" + name + ">       zużył: " + item);
+            ProducerConsumerApp.textArea.append("Konsument <" + name + ">       zużył: " + item + "\n");
         }
     }
 
