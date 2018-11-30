@@ -2,6 +2,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -27,6 +31,13 @@ public class ProducerConsumerApp extends JFrame{
 	private int bufforSize;
 	private int producerQuantity;
 	private int consumerQuantity;
+	private JMenuBar menuBar = new JMenuBar();
+	private JMenu menuFile = new JMenu("Plik");
+	private JMenu menuHelp = new JMenu("Pomoc");
+	private JMenuItem menuEnd = new JMenuItem("Zakończ");
+	private JMenuItem menuInfo = new JMenuItem("Info");
+	private JMenuItem menuAbout = new JMenuItem("O programie");
+	
 	private Buffer buffer;
 	private Consumer c1,c2,c3,c4,c5;
 	private Producer p1,p2,p3,p4,p5;
@@ -45,6 +56,7 @@ public class ProducerConsumerApp extends JFrame{
     	this.setSize(600, 400);
     	this.setLocationRelativeTo(null);
     	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    	
     	
     	stopButton.addActionListener(e -> {
     		for(int i = 0; i < producerQuantity; ++i) {
@@ -87,11 +99,28 @@ public class ProducerConsumerApp extends JFrame{
             			consumers[i].setRun(true);
             		}
         		}
-
-    		
-    		
-    		
     	});
+    	
+    	menuEnd.addActionListener(actionEvent -> {
+    		System.exit(0);
+    	});
+    	
+    	menuInfo.addActionListener(actionEvent -> {
+    		JOptionPane.showMessageDialog(this, "Program służący do symulacji problemu producenta i konsumenta", "Informacja", JOptionPane.INFORMATION_MESSAGE);
+    	});
+    	
+    	menuAbout.addActionListener(actionEvent -> {
+    		JOptionPane.showMessageDialog(this, "Autor: Tymoteusz Frankiewicz\nData: 30.11.2018", "Informacja", JOptionPane.INFORMATION_MESSAGE);
+    	});
+    	
+    	menuBar.add(menuFile);
+    	menuFile.add(menuEnd);
+    	
+    	menuBar.add(menuHelp);
+    	menuHelp.add(menuInfo);
+    	menuHelp.add(menuAbout);
+    	
+    	setJMenuBar(menuBar);
     	
     	panel.add(buforSizeLabel);
     	panel.add(buforSizeComboBox);
