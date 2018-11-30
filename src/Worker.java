@@ -2,6 +2,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 abstract class Worker extends Thread {
 	
+	protected boolean run;
+	
 	//uspienie watku na dany czas
 	public static void sleep(int millis) {
 		try {
@@ -38,4 +40,12 @@ abstract class Worker extends Thread {
 	public void run() {
 	}
     
+    public void setRun(boolean run) {
+    	this.run = run;
+    }
+    
+    public boolean getRun() {
+    	return run;
+    }
+
 }

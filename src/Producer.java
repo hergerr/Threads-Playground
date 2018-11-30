@@ -3,12 +3,14 @@ class Producer extends Worker {
     public Producer(String name , Buffer buffer){
         this.name = name;
         this.buffer = buffer;
+        run = true;
     }
+    
 
     @Override
     public void run(){
         int item;
-        while(true){
+        while(run){
             // Producent "produkuje" nowy przedmiot.
             item = Worker.itemID++;
             ProducerConsumerApp.textArea.append("Producent <" + name + ">   produkuje: " + item + "\n");

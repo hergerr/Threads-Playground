@@ -3,12 +3,13 @@ class Consumer extends Worker {
     public Consumer(String name , Buffer buffer){
         this.name = name;
         this.buffer = buffer;
+        run = true;
     }
 
     @Override
     public void run(){
         int item;
-        while(true){
+        while(run){
             // Konsument pobiera przedmiot z bufora
             item = buffer.get(this);
 

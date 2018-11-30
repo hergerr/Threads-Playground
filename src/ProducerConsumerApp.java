@@ -1,6 +1,3 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -47,28 +44,53 @@ public class ProducerConsumerApp extends JFrame{
     	this.setTitle("Wątki - okno główne");
     	this.setSize(600, 400);
     	this.setLocationRelativeTo(null);
+    	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	
     	stopButton.addActionListener(e -> {
-
+    		for(int i = 0; i < producerQuantity; ++i) {
+    			producers[i].setRun(false);
+    		}
+    		
+    		for(int i = 0; i < consumerQuantity; ++i) {
+    			consumers[i].setRun(false);
+    		}
 
     	});
     	
     	startButton.addActionListener(e -> {
-    		bufforSize = (int) buforSizeComboBox.getSelectedItem();
-    		producerQuantity = (int) producerQuantityComboBox.getSelectedItem();
-    		consumerQuantity = (int) consumerQuantityComboBox.getSelectedItem();
+    			bufforSize = (int) buforSizeComboBox.getSelectedItem();
+        		producerQuantity = (int) producerQuantityComboBox.getSelectedItem();
+        		consumerQuantity = (int) consumerQuantityComboBox.getSelectedItem();
+        		buforSizeComboBox.setEnabled(false);
+        		producerQuantityComboBox.setEnabled(false);
+        		consumerQuantityComboBox.setEnabled(false);
+        		buffer = new Buffer(bufforSize);
+        		
+        		//pętle służące do inicjalizacji wątków
+        		for(int i = 0; i < producerQuantity; ++i) {
+        			producers[i] = new Producer("P" + Integer.toString(i + 1), buffer);
+        			producers[i].start();
+        		}
+        		
+        		for(int i = 0; i < consumerQuantity; ++i) {
+        			consumers[i] = new Consumer("K" + Integer.toString(i + 1), buffer);
+        			consumers[i].start();
+        		}
+
+        		if(producers[0].getRun() == false) {
+            		//pętle służace do ponownego startu symulacji
+        			for(int i = 0; i < producerQuantity; ++i) {
+            			producers[i].setRun(true);
+            		}
+            		
+            		for(int i = 0; i < consumerQuantity; ++i) {
+            			consumers[i].setRun(true);
+            		}
+        		}
+
     		
-    		buffer = new Buffer(bufforSize);
     		
-    		for(int i = 0; i < producerQuantity; ++i) {
-    			producers[i] = new Producer("P" + Integer.toString(i + 1), buffer);
-    			producers[i].start();
-    		}
     		
-    		for(int i = 0; i < consumerQuantity; ++i) {
-    			consumers[i] = new Consumer("K" + Integer.toString(i + 1), buffer);
-    			consumers[i].start();
-    		}
     	});
     	
     	panel.add(buforSizeLabel);
