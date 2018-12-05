@@ -1,3 +1,15 @@
+/*
+ * Program: Producent - Konsument
+ * 
+ * Plik: Buffer.java
+ * Klasa buforu z metodami obsługującymu konsumenta i producenta 
+ * 
+ * 
+ * Autor:Tymoteusz Frankiewicz
+ * Data: listopad/grudzien 2018
+ */
+
+
 public class Buffer{
 	private int contents;
 	private int size;
@@ -33,7 +45,6 @@ public class Buffer{
         }
         contents = item;
         ++currentQuantityOfItems;
-        System.out.println(currentQuantityOfItems);
         ProducerConsumerApp.textArea.append("Producent <" + producer.name + ">       oddal: " + item + "\n");
         notifyAll();
 	}

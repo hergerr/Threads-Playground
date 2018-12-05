@@ -1,3 +1,14 @@
+/*
+ * Program: Producent - Konsument
+ * 
+ * Plik: Consumer.java
+ * Klasa modelu Konsumenta 
+ * 
+ * 
+ * Autor:Tymoteusz Frankiewicz
+ * Data: listopad/grudzien 2018
+ */
+
 class Consumer extends Worker {
 
     public Consumer(String name , Buffer buffer){

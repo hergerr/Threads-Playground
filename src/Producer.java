@@ -1,3 +1,15 @@
+/*
+ * Program: Producent - Konsument
+ * 
+ * Plik: Producer.java
+ * Klasa modelu Pracownika 
+ * 
+ * 
+ * Autor:Tymoteusz Frankiewicz
+ * Data: listopad/grudzien 2018
+ */
+
+
 class Producer extends Worker {
 
     public Producer(String name , Buffer buffer){

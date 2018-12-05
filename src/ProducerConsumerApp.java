@@ -10,6 +10,18 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+
+/*
+ * Program: Producent - Konsument
+ * 
+ * Plik: ProducerConsumerApp.java
+ * Klasa odpowiedzialna za utworzenie i obsługę okna 
+ * 
+ * 
+ * Autor:Tymoteusz Frankiewicz
+ * Data: listopad/grudzien 2018
+ */
+
 public class ProducerConsumerApp extends JFrame{
 
 	private static final long serialVersionUID = 1L;
@@ -37,6 +49,8 @@ public class ProducerConsumerApp extends JFrame{
 	private JMenuItem menuEnd = new JMenuItem("Zakończ");
 	private JMenuItem menuInfo = new JMenuItem("Info");
 	private JMenuItem menuAbout = new JMenuItem("O programie");
+	
+
 	
 	private Buffer buffer;
 	private Consumer c1,c2,c3,c4,c5;

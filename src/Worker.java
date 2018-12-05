@@ -1,5 +1,16 @@
 import java.util.concurrent.ThreadLocalRandom;
 
+/*
+ * Program: Producent - Konsument
+ * 
+ * Plik: Worker.java
+ * Klasa abstrakcyjna dla modeli Producenta i Konsumenta 
+ * 
+ * 
+ * Autor:Tymoteusz Frankiewicz
+ * Data: listopad/grudzien 2018
+ */
+
 abstract class Worker extends Thread {
 	
 	protected boolean run;
